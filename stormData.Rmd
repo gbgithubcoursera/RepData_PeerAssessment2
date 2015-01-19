@@ -3,6 +3,8 @@ title: "Severe Weather Events Impacts on Both Public Health and Economic Problem
 output: 
   html_document:
     keep_md: true
+  pdf_document:
+    highlight: zenburn 
 ---
 # Synopsis
 The report explores the U.S. National Oceanic and Atmospheric Administration's (NOAA) Storm data for the period  year 1950 and end in November 2011.
@@ -83,7 +85,7 @@ head(healthData)
 
 healthTable <- xtable(healthData[1:10, c("INJURIES","FATALITIES")], caption = "Table 1. Top Ten Events")
 
-print(healthTable, comment=F,include.rownames = F, sanitize.colnames.function = identity)
+print(healthTable, floating=FALSE, comment=F,type="html",hline.after=c(0,nrow(healthTable)))
 #healthTable
 
 # http://rstudio-pubs-static.s3.amazonaws.com/18170_65d84748b47843c6a01d81b60b09d10c.html

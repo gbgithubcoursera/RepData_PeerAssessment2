@@ -197,27 +197,20 @@ head(healthData)</code></pre>
 ## HEAT                     HEAT     2100        937  3037</code></pre>
 <pre class="r"><code>healthTable &lt;- xtable(healthData[1:10, c(&quot;INJURIES&quot;,&quot;FATALITIES&quot;)], caption = &quot;Table 1. Top Ten Events&quot;)
 
-print(healthTable, comment=F,include.rownames = F, sanitize.colnames.function = identity)</code></pre>
-<pre><code>## \begin{table}[ht]
-## \centering
-## \begin{tabular}{rr}
-##   \hline
-## INJURIES &amp; FATALITIES \\ 
-##   \hline
-## 91346.00 &amp; 5633.00 \\ 
-##   6525.00 &amp; 1903.00 \\ 
-##   6957.00 &amp; 504.00 \\ 
-##   6789.00 &amp; 470.00 \\ 
-##   5230.00 &amp; 816.00 \\ 
-##   2100.00 &amp; 937.00 \\ 
-##   1777.00 &amp; 978.00 \\ 
-##   1975.00 &amp; 89.00 \\ 
-##   1488.00 &amp; 133.00 \\ 
-##   1321.00 &amp; 206.00 \\ 
-##    \hline
-## \end{tabular}
-## \caption{Table 1. Top Ten Events} 
-## \end{table}</code></pre>
+print(healthTable, floating=FALSE, comment=F,type=&quot;html&quot;,hline.after=c(0,nrow(healthTable)))</code></pre>
+<pre><code>## &lt;table border=1&gt;
+## &lt;tr&gt; &lt;th&gt;  &lt;/th&gt; &lt;th&gt; INJURIES &lt;/th&gt; &lt;th&gt; FATALITIES &lt;/th&gt;  &lt;/tr&gt;
+##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; TORNADO &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 91346.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 5633.00 &lt;/td&gt; &lt;/tr&gt;
+##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; EXCESSIVE HEAT &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 6525.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 1903.00 &lt;/td&gt; &lt;/tr&gt;
+##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; TSTM WIND &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 6957.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 504.00 &lt;/td&gt; &lt;/tr&gt;
+##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; FLOOD &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 6789.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 470.00 &lt;/td&gt; &lt;/tr&gt;
+##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; LIGHTNING &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 5230.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 816.00 &lt;/td&gt; &lt;/tr&gt;
+##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; HEAT &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 2100.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 937.00 &lt;/td&gt; &lt;/tr&gt;
+##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; FLASH FLOOD &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 1777.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 978.00 &lt;/td&gt; &lt;/tr&gt;
+##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; ICE STORM &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 1975.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 89.00 &lt;/td&gt; &lt;/tr&gt;
+##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; THUNDERSTORM WIND &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 1488.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 133.00 &lt;/td&gt; &lt;/tr&gt;
+##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; WINTER STORM &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 1321.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 206.00 &lt;/td&gt; &lt;/tr&gt;
+##    &lt;/table&gt;</code></pre>
 <pre class="r"><code>#healthTable
 
 # http://rstudio-pubs-static.s3.amazonaws.com/18170_65d84748b47843c6a01d81b60b09d10c.html

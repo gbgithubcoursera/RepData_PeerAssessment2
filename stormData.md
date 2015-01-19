@@ -211,30 +211,23 @@ head(healthData)
 ```r
 healthTable <- xtable(healthData[1:10, c("INJURIES","FATALITIES")], caption = "Table 1. Top Ten Events")
 
-print(healthTable, comment=F,include.rownames = F, sanitize.colnames.function = identity)
+print(healthTable, floating=FALSE, comment=F,type="html",hline.after=c(0,nrow(healthTable)))
 ```
 
 ```
-## \begin{table}[ht]
-## \centering
-## \begin{tabular}{rr}
-##   \hline
-## INJURIES & FATALITIES \\ 
-##   \hline
-## 91346.00 & 5633.00 \\ 
-##   6525.00 & 1903.00 \\ 
-##   6957.00 & 504.00 \\ 
-##   6789.00 & 470.00 \\ 
-##   5230.00 & 816.00 \\ 
-##   2100.00 & 937.00 \\ 
-##   1777.00 & 978.00 \\ 
-##   1975.00 & 89.00 \\ 
-##   1488.00 & 133.00 \\ 
-##   1321.00 & 206.00 \\ 
-##    \hline
-## \end{tabular}
-## \caption{Table 1. Top Ten Events} 
-## \end{table}
+## <table border=1>
+## <tr> <th>  </th> <th> INJURIES </th> <th> FATALITIES </th>  </tr>
+##   <tr> <td align="right"> TORNADO </td> <td align="right"> 91346.00 </td> <td align="right"> 5633.00 </td> </tr>
+##   <tr> <td align="right"> EXCESSIVE HEAT </td> <td align="right"> 6525.00 </td> <td align="right"> 1903.00 </td> </tr>
+##   <tr> <td align="right"> TSTM WIND </td> <td align="right"> 6957.00 </td> <td align="right"> 504.00 </td> </tr>
+##   <tr> <td align="right"> FLOOD </td> <td align="right"> 6789.00 </td> <td align="right"> 470.00 </td> </tr>
+##   <tr> <td align="right"> LIGHTNING </td> <td align="right"> 5230.00 </td> <td align="right"> 816.00 </td> </tr>
+##   <tr> <td align="right"> HEAT </td> <td align="right"> 2100.00 </td> <td align="right"> 937.00 </td> </tr>
+##   <tr> <td align="right"> FLASH FLOOD </td> <td align="right"> 1777.00 </td> <td align="right"> 978.00 </td> </tr>
+##   <tr> <td align="right"> ICE STORM </td> <td align="right"> 1975.00 </td> <td align="right"> 89.00 </td> </tr>
+##   <tr> <td align="right"> THUNDERSTORM WIND </td> <td align="right"> 1488.00 </td> <td align="right"> 133.00 </td> </tr>
+##   <tr> <td align="right"> WINTER STORM </td> <td align="right"> 1321.00 </td> <td align="right"> 206.00 </td> </tr>
+##    </table>
 ```
 
 ```r
