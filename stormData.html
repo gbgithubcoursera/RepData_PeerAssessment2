@@ -155,8 +155,7 @@ injuries</code></pre>
 <pre class="r"><code>library(xtable)
 packages &lt;- c(&quot;xtable&quot;)
 sapply(packages, require, character.only = TRUE, quietly = TRUE)</code></pre>
-<pre><code>## xtable 
-##   TRUE</code></pre>
+<p>xtable TRUE</p>
 <pre class="r"><code># Subset Data into the columns of interrest
 healthData &lt;- stormData[, c(&quot;EVTYPE&quot;, &quot;INJURIES&quot;, &quot;FATALITIES&quot;)]
 #head(healthData)
@@ -174,13 +173,8 @@ healthData$TOTAL &lt;- healthData$FATALITIES + healthData$INJURIES
 healthData &lt;- healthData[order(healthData$TOTAL, decreasing = TRUE), ]
 
 head(healthData)</code></pre>
-<pre><code>##             EVTYPE INJURIES FATALITIES TOTAL
-## 834        TORNADO    91346       5633 96979
-## 130 EXCESSIVE HEAT     6525       1903  8428
-## 856      TSTM WIND     6957        504  7461
-## 170          FLOOD     6789        470  7259
-## 464      LIGHTNING     5230        816  6046
-## 275           HEAT     2100        937  3037</code></pre>
+<pre><code>        EVTYPE INJURIES FATALITIES TOTAL</code></pre>
+<p>834 TORNADO 91346 5633 96979 130 EXCESSIVE HEAT 6525 1903 8428 856 TSTM WIND 6957 504 7461 170 FLOOD 6789 470 7259 464 LIGHTNING 5230 816 6046 275 HEAT 2100 937 3037</p>
 <pre class="r"><code># Rename the columns to corresponding event types
 row.names(healthData) &lt;- healthData$EVTYPE
 
@@ -188,29 +182,89 @@ row.names(healthData) &lt;- healthData$EVTYPE
 healthData &lt;- healthData[healthData$TOTAL != 0, ]
 
 head(healthData)</code></pre>
-<pre><code>##                        EVTYPE INJURIES FATALITIES TOTAL
-## TORNADO               TORNADO    91346       5633 96979
-## EXCESSIVE HEAT EXCESSIVE HEAT     6525       1903  8428
-## TSTM WIND           TSTM WIND     6957        504  7461
-## FLOOD                   FLOOD     6789        470  7259
-## LIGHTNING           LIGHTNING     5230        816  6046
-## HEAT                     HEAT     2100        937  3037</code></pre>
+<pre><code>                   EVTYPE INJURIES FATALITIES TOTAL</code></pre>
+<p>TORNADO TORNADO 91346 5633 96979 EXCESSIVE HEAT EXCESSIVE HEAT 6525 1903 8428 TSTM WIND TSTM WIND 6957 504 7461 FLOOD FLOOD 6789 470 7259 LIGHTNING LIGHTNING 5230 816 6046 HEAT HEAT 2100 937 3037</p>
 <pre class="r"><code>healthTable &lt;- xtable(healthData[1:10, c(&quot;INJURIES&quot;,&quot;FATALITIES&quot;)], caption = &quot;Table 1. Top Ten Events&quot;)
 
 print(healthTable, floating=FALSE, comment=F,type=&quot;html&quot;,hline.after=c(0,nrow(healthTable)))</code></pre>
-<pre><code>## &lt;table border=1&gt;
-## &lt;tr&gt; &lt;th&gt;  &lt;/th&gt; &lt;th&gt; INJURIES &lt;/th&gt; &lt;th&gt; FATALITIES &lt;/th&gt;  &lt;/tr&gt;
-##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; TORNADO &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 91346.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 5633.00 &lt;/td&gt; &lt;/tr&gt;
-##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; EXCESSIVE HEAT &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 6525.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 1903.00 &lt;/td&gt; &lt;/tr&gt;
-##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; TSTM WIND &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 6957.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 504.00 &lt;/td&gt; &lt;/tr&gt;
-##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; FLOOD &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 6789.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 470.00 &lt;/td&gt; &lt;/tr&gt;
-##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; LIGHTNING &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 5230.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 816.00 &lt;/td&gt; &lt;/tr&gt;
-##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; HEAT &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 2100.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 937.00 &lt;/td&gt; &lt;/tr&gt;
-##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; FLASH FLOOD &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 1777.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 978.00 &lt;/td&gt; &lt;/tr&gt;
-##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; ICE STORM &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 1975.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 89.00 &lt;/td&gt; &lt;/tr&gt;
-##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; THUNDERSTORM WIND &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 1488.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 133.00 &lt;/td&gt; &lt;/tr&gt;
-##   &lt;tr&gt; &lt;td align=&quot;right&quot;&gt; WINTER STORM &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 1321.00 &lt;/td&gt; &lt;td align=&quot;right&quot;&gt; 206.00 &lt;/td&gt; &lt;/tr&gt;
-##    &lt;/table&gt;</code></pre>
+<table border="1">
+<tr> <th>  </th> <th> 
+INJURIES
+</th> <th> 
+FATALITIES
+</th>  </tr>
+  <tr> <td align="right"> 
+TORNADO
+</td> <td align="right"> 
+91346.00
+</td> <td align="right"> 
+5633.00
+</td> </tr>
+  <tr> <td align="right"> 
+EXCESSIVE HEAT
+</td> <td align="right"> 
+6525.00
+</td> <td align="right"> 
+1903.00
+</td> </tr>
+  <tr> <td align="right"> 
+TSTM WIND
+</td> <td align="right"> 
+6957.00
+</td> <td align="right"> 
+504.00
+</td> </tr>
+  <tr> <td align="right"> 
+FLOOD
+</td> <td align="right"> 
+6789.00
+</td> <td align="right"> 
+470.00
+</td> </tr>
+  <tr> <td align="right"> 
+LIGHTNING
+</td> <td align="right"> 
+5230.00
+</td> <td align="right"> 
+816.00
+</td> </tr>
+  <tr> <td align="right"> 
+HEAT
+</td> <td align="right"> 
+2100.00
+</td> <td align="right"> 
+937.00
+</td> </tr>
+  <tr> <td align="right"> 
+FLASH FLOOD
+</td> <td align="right"> 
+1777.00
+</td> <td align="right"> 
+978.00
+</td> </tr>
+  <tr> <td align="right"> 
+ICE STORM
+</td> <td align="right"> 
+1975.00
+</td> <td align="right"> 
+89.00
+</td> </tr>
+  <tr> <td align="right"> 
+THUNDERSTORM WIND
+</td> <td align="right"> 
+1488.00
+</td> <td align="right"> 
+133.00
+</td> </tr>
+  <tr> <td align="right"> 
+WINTER STORM
+</td> <td align="right"> 
+1321.00
+</td> <td align="right"> 
+206.00
+</td> </tr>
+   </table>
+
 <pre class="r"><code>#healthTable
 
 # http://rstudio-pubs-static.s3.amazonaws.com/18170_65d84748b47843c6a01d81b60b09d10c.html

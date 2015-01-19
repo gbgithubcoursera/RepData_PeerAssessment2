@@ -51,7 +51,7 @@ injuries <- sortHelper("INJURIES", dataset = stormData)
 injuries
 ```
 
-```{r, echo=TRUE}
+```{r, echo=TRUE, results='asis'}
 
 library(xtable)
 packages <- c("xtable")

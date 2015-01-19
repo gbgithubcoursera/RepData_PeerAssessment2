@@ -153,10 +153,8 @@ packages <- c("xtable")
 sapply(packages, require, character.only = TRUE, quietly = TRUE)
 ```
 
-```
-## xtable 
-##   TRUE
-```
+xtable 
+  TRUE 
 
 ```r
 # Subset Data into the columns of interrest
@@ -178,15 +176,13 @@ healthData <- healthData[order(healthData$TOTAL, decreasing = TRUE), ]
 head(healthData)
 ```
 
-```
-##             EVTYPE INJURIES FATALITIES TOTAL
-## 834        TORNADO    91346       5633 96979
-## 130 EXCESSIVE HEAT     6525       1903  8428
-## 856      TSTM WIND     6957        504  7461
-## 170          FLOOD     6789        470  7259
-## 464      LIGHTNING     5230        816  6046
-## 275           HEAT     2100        937  3037
-```
+            EVTYPE INJURIES FATALITIES TOTAL
+834        TORNADO    91346       5633 96979
+130 EXCESSIVE HEAT     6525       1903  8428
+856      TSTM WIND     6957        504  7461
+170          FLOOD     6789        470  7259
+464      LIGHTNING     5230        816  6046
+275           HEAT     2100        937  3037
 
 ```r
 # Rename the columns to corresponding event types
@@ -198,15 +194,13 @@ healthData <- healthData[healthData$TOTAL != 0, ]
 head(healthData)
 ```
 
-```
-##                        EVTYPE INJURIES FATALITIES TOTAL
-## TORNADO               TORNADO    91346       5633 96979
-## EXCESSIVE HEAT EXCESSIVE HEAT     6525       1903  8428
-## TSTM WIND           TSTM WIND     6957        504  7461
-## FLOOD                   FLOOD     6789        470  7259
-## LIGHTNING           LIGHTNING     5230        816  6046
-## HEAT                     HEAT     2100        937  3037
-```
+                       EVTYPE INJURIES FATALITIES TOTAL
+TORNADO               TORNADO    91346       5633 96979
+EXCESSIVE HEAT EXCESSIVE HEAT     6525       1903  8428
+TSTM WIND           TSTM WIND     6957        504  7461
+FLOOD                   FLOOD     6789        470  7259
+LIGHTNING           LIGHTNING     5230        816  6046
+HEAT                     HEAT     2100        937  3037
 
 ```r
 healthTable <- xtable(healthData[1:10, c("INJURIES","FATALITIES")], caption = "Table 1. Top Ten Events")
@@ -214,21 +208,19 @@ healthTable <- xtable(healthData[1:10, c("INJURIES","FATALITIES")], caption = "T
 print(healthTable, floating=FALSE, comment=F,type="html",hline.after=c(0,nrow(healthTable)))
 ```
 
-```
 <table border=1>
- <tr> <th>  </th> <th> INJURIES </th> <th> FATALITIES </th>  </tr>
-   <tr> <td align="right"> TORNADO </td> <td align="right"> 91346.00 </td> <td align="right"> 5633.00 </td> </tr>
-   <tr> <td align="right"> EXCESSIVE HEAT </td> <td align="right"> 6525.00 </td> <td align="right"> 1903.00 </td> </tr>
-   <tr> <td align="right"> TSTM WIND </td> <td align="right"> 6957.00 </td> <td align="right"> 504.00 </td> </tr>
-   <tr> <td align="right"> FLOOD </td> <td align="right"> 6789.00 </td> <td align="right"> 470.00 </td> </tr>
-   <tr> <td align="right"> LIGHTNING </td> <td align="right"> 5230.00 </td> <td align="right"> 816.00 </td> </tr>
-   <tr> <td align="right"> HEAT </td> <td align="right"> 2100.00 </td> <td align="right"> 937.00 </td> </tr>
-   <tr> <td align="right"> FLASH FLOOD </td> <td align="right"> 1777.00 </td> <td align="right"> 978.00 </td> </tr>
-   <tr> <td align="right"> ICE STORM </td> <td align="right"> 1975.00 </td> <td align="right"> 89.00 </td> </tr>
-   <tr> <td align="right"> THUNDERSTORM WIND </td> <td align="right"> 1488.00 </td> <td align="right"> 133.00 </td> </tr>
-   <tr> <td align="right"> WINTER STORM </td> <td align="right"> 1321.00 </td> <td align="right"> 206.00 </td> </tr>
+<tr> <th>  </th> <th> INJURIES </th> <th> FATALITIES </th>  </tr>
+  <tr> <td align="right"> TORNADO </td> <td align="right"> 91346.00 </td> <td align="right"> 5633.00 </td> </tr>
+  <tr> <td align="right"> EXCESSIVE HEAT </td> <td align="right"> 6525.00 </td> <td align="right"> 1903.00 </td> </tr>
+  <tr> <td align="right"> TSTM WIND </td> <td align="right"> 6957.00 </td> <td align="right"> 504.00 </td> </tr>
+  <tr> <td align="right"> FLOOD </td> <td align="right"> 6789.00 </td> <td align="right"> 470.00 </td> </tr>
+  <tr> <td align="right"> LIGHTNING </td> <td align="right"> 5230.00 </td> <td align="right"> 816.00 </td> </tr>
+  <tr> <td align="right"> HEAT </td> <td align="right"> 2100.00 </td> <td align="right"> 937.00 </td> </tr>
+  <tr> <td align="right"> FLASH FLOOD </td> <td align="right"> 1777.00 </td> <td align="right"> 978.00 </td> </tr>
+  <tr> <td align="right"> ICE STORM </td> <td align="right"> 1975.00 </td> <td align="right"> 89.00 </td> </tr>
+  <tr> <td align="right"> THUNDERSTORM WIND </td> <td align="right"> 1488.00 </td> <td align="right"> 133.00 </td> </tr>
+  <tr> <td align="right"> WINTER STORM </td> <td align="right"> 1321.00 </td> <td align="right"> 206.00 </td> </tr>
    </table>
-```
 
 ```r
 #healthTable
