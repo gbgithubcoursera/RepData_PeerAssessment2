@@ -152,16 +152,17 @@ injuries</code></pre>
 ## 13         HIGH WIND     1137
 ## 14        HEAVY SNOW     1021
 ## 15          WILDFIRE      911</code></pre>
-<pre class="r"><code>library(xtable)
-packages &lt;- c(&quot;xtable&quot;)
-sapply(packages, require, character.only = TRUE, quietly = TRUE)</code></pre>
-<p>xtable TRUE</p>
-<pre class="r"><code># Subset Data into the columns of interrest
+<pre class="r"><code>rm(stormData)</code></pre>
+<pre class="r"><code>stormData &lt;- read.csv(&quot;StormData.csv&quot;, header=TRUE)
+library(xtable)
+#packages &lt;- c(&quot;xtable&quot;)
+#sapply(packages, require, character.only = TRUE, quietly = TRUE)
+
+# Subset Data into the columns of interrest
 healthData &lt;- stormData[, c(&quot;EVTYPE&quot;, &quot;INJURIES&quot;, &quot;FATALITIES&quot;)]
-#head(healthData)
-
-
-#healthData &lt;- aggregate.data.frame(x = healthData[, c(2, 3)], by = list(healthData$EVTYPE), FUN = sum)
+head(healthData)</code></pre>
+<p>EVTYPE INJURIES FATALITIES 1 TORNADO 15 0 2 TORNADO 0 0 3 TORNADO 2 0 4 TORNADO 2 0 5 TORNADO 2 0 6 TORNADO 6 0</p>
+<pre class="r"><code>#healthData &lt;- aggregate.data.frame(x = healthData[, c(2, 3)], by = list(healthData$EVTYPE), FUN = sum)
 healthData &lt;- aggregate(x = healthData[, c(2, 3)], by = list(healthData$EVTYPE), FUN = sum)
 
 # Rename the first coluns
@@ -184,10 +185,16 @@ healthData &lt;- healthData[healthData$TOTAL != 0, ]
 head(healthData)</code></pre>
 <pre><code>                   EVTYPE INJURIES FATALITIES TOTAL</code></pre>
 <p>TORNADO TORNADO 91346 5633 96979 EXCESSIVE HEAT EXCESSIVE HEAT 6525 1903 8428 TSTM WIND TSTM WIND 6957 504 7461 FLOOD FLOOD 6789 470 7259 LIGHTNING LIGHTNING 5230 816 6046 HEAT HEAT 2100 937 3037</p>
-<pre class="r"><code>healthTable &lt;- xtable(healthData[1:10, c(&quot;INJURIES&quot;,&quot;FATALITIES&quot;)], caption = &quot;Table 1. Top Ten Events&quot;)
+<pre class="r"><code>healthTable &lt;- xtable(healthData[1:10, c(&quot;INJURIES&quot;,&quot;FATALITIES&quot;)], caption = &quot;Table 1. Top Ten Events&quot;,digit=c(0,0,0))
 
-print(healthTable, floating=FALSE, comment=F,type=&quot;html&quot;,hline.after=c(0,nrow(healthTable)))</code></pre>
+#print(healthTable, floating=FALSE, comment=F,type=&quot;html&quot;,hline.after=c(0,nrow(healthTable)))
+print(healthTable,type=&quot;html&quot;)</code></pre>
+<!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
+<!-- Sat Jan 24 17:15:17 2015 -->
 <table border="1">
+<caption align="bottom"> 
+Table 1. Top Ten Events
+</caption>
 <tr> <th>  </th> <th> 
 INJURIES
 </th> <th> 
@@ -196,72 +203,72 @@ FATALITIES
   <tr> <td align="right"> 
 TORNADO
 </td> <td align="right"> 
-91346.00
+91346
 </td> <td align="right"> 
-5633.00
+5633
 </td> </tr>
   <tr> <td align="right"> 
 EXCESSIVE HEAT
 </td> <td align="right"> 
-6525.00
+6525
 </td> <td align="right"> 
-1903.00
+1903
 </td> </tr>
   <tr> <td align="right"> 
 TSTM WIND
 </td> <td align="right"> 
-6957.00
+6957
 </td> <td align="right"> 
-504.00
+504
 </td> </tr>
   <tr> <td align="right"> 
 FLOOD
 </td> <td align="right"> 
-6789.00
+6789
 </td> <td align="right"> 
-470.00
+470
 </td> </tr>
   <tr> <td align="right"> 
 LIGHTNING
 </td> <td align="right"> 
-5230.00
+5230
 </td> <td align="right"> 
-816.00
+816
 </td> </tr>
   <tr> <td align="right"> 
 HEAT
 </td> <td align="right"> 
-2100.00
+2100
 </td> <td align="right"> 
-937.00
+937
 </td> </tr>
   <tr> <td align="right"> 
 FLASH FLOOD
 </td> <td align="right"> 
-1777.00
+1777
 </td> <td align="right"> 
-978.00
+978
 </td> </tr>
   <tr> <td align="right"> 
 ICE STORM
 </td> <td align="right"> 
-1975.00
+1975
 </td> <td align="right"> 
-89.00
+89
 </td> </tr>
   <tr> <td align="right"> 
 THUNDERSTORM WIND
 </td> <td align="right"> 
-1488.00
+1488
 </td> <td align="right"> 
-133.00
+133
 </td> </tr>
   <tr> <td align="right"> 
 WINTER STORM
 </td> <td align="right"> 
-1321.00
+1321
 </td> <td align="right"> 
-206.00
+206
 </td> </tr>
    </table>
 
@@ -275,7 +282,8 @@ WINTER STORM
 # 
 #####################################
 ### http://rstudio-pubs-static.s3.amazonaws.com/18170_65d84748b47843c6a01d81b60b09d10c.html
-# http://www.inside-r.org/packages/cran/xtable/docs/print.xtable</code></pre>
+# http://www.inside-r.org/packages/cran/xtable/docs/print.xtable
+rm(stormData)</code></pre>
 </div>
 <div id="results" class="section level2">
 <h2>Results</h2>

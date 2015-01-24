@@ -146,22 +146,31 @@ injuries
 ## 15          WILDFIRE      911
 ```
 
-
 ```r
-library(xtable)
-packages <- c("xtable")
-sapply(packages, require, character.only = TRUE, quietly = TRUE)
+rm(stormData)
 ```
 
-xtable 
-  TRUE 
 
 ```r
+stormData <- read.csv("StormData.csv", header=TRUE)
+library(xtable)
+#packages <- c("xtable")
+#sapply(packages, require, character.only = TRUE, quietly = TRUE)
+
 # Subset Data into the columns of interrest
 healthData <- stormData[, c("EVTYPE", "INJURIES", "FATALITIES")]
-#head(healthData)
+head(healthData)
+```
 
+   EVTYPE INJURIES FATALITIES
+1 TORNADO       15          0
+2 TORNADO        0          0
+3 TORNADO        2          0
+4 TORNADO        2          0
+5 TORNADO        2          0
+6 TORNADO        6          0
 
+```r
 #healthData <- aggregate.data.frame(x = healthData[, c(2, 3)], by = list(healthData$EVTYPE), FUN = sum)
 healthData <- aggregate(x = healthData[, c(2, 3)], by = list(healthData$EVTYPE), FUN = sum)
 
@@ -203,23 +212,27 @@ LIGHTNING           LIGHTNING     5230        816  6046
 HEAT                     HEAT     2100        937  3037
 
 ```r
-healthTable <- xtable(healthData[1:10, c("INJURIES","FATALITIES")], caption = "Table 1. Top Ten Events")
+healthTable <- xtable(healthData[1:10, c("INJURIES","FATALITIES")], caption = "Table 1. Top Ten Events",digit=c(0,0,0))
 
-print(healthTable, floating=FALSE, comment=F,type="html",hline.after=c(0,nrow(healthTable)))
+#print(healthTable, floating=FALSE, comment=F,type="html",hline.after=c(0,nrow(healthTable)))
+print(healthTable,type="html")
 ```
 
+<!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
+<!-- Sat Jan 24 17:15:17 2015 -->
 <table border=1>
+<caption align="bottom"> Table 1. Top Ten Events </caption>
 <tr> <th>  </th> <th> INJURIES </th> <th> FATALITIES </th>  </tr>
-  <tr> <td align="right"> TORNADO </td> <td align="right"> 91346.00 </td> <td align="right"> 5633.00 </td> </tr>
-  <tr> <td align="right"> EXCESSIVE HEAT </td> <td align="right"> 6525.00 </td> <td align="right"> 1903.00 </td> </tr>
-  <tr> <td align="right"> TSTM WIND </td> <td align="right"> 6957.00 </td> <td align="right"> 504.00 </td> </tr>
-  <tr> <td align="right"> FLOOD </td> <td align="right"> 6789.00 </td> <td align="right"> 470.00 </td> </tr>
-  <tr> <td align="right"> LIGHTNING </td> <td align="right"> 5230.00 </td> <td align="right"> 816.00 </td> </tr>
-  <tr> <td align="right"> HEAT </td> <td align="right"> 2100.00 </td> <td align="right"> 937.00 </td> </tr>
-  <tr> <td align="right"> FLASH FLOOD </td> <td align="right"> 1777.00 </td> <td align="right"> 978.00 </td> </tr>
-  <tr> <td align="right"> ICE STORM </td> <td align="right"> 1975.00 </td> <td align="right"> 89.00 </td> </tr>
-  <tr> <td align="right"> THUNDERSTORM WIND </td> <td align="right"> 1488.00 </td> <td align="right"> 133.00 </td> </tr>
-  <tr> <td align="right"> WINTER STORM </td> <td align="right"> 1321.00 </td> <td align="right"> 206.00 </td> </tr>
+  <tr> <td align="right"> TORNADO </td> <td align="right"> 91346 </td> <td align="right"> 5633 </td> </tr>
+  <tr> <td align="right"> EXCESSIVE HEAT </td> <td align="right"> 6525 </td> <td align="right"> 1903 </td> </tr>
+  <tr> <td align="right"> TSTM WIND </td> <td align="right"> 6957 </td> <td align="right"> 504 </td> </tr>
+  <tr> <td align="right"> FLOOD </td> <td align="right"> 6789 </td> <td align="right"> 470 </td> </tr>
+  <tr> <td align="right"> LIGHTNING </td> <td align="right"> 5230 </td> <td align="right"> 816 </td> </tr>
+  <tr> <td align="right"> HEAT </td> <td align="right"> 2100 </td> <td align="right"> 937 </td> </tr>
+  <tr> <td align="right"> FLASH FLOOD </td> <td align="right"> 1777 </td> <td align="right"> 978 </td> </tr>
+  <tr> <td align="right"> ICE STORM </td> <td align="right"> 1975 </td> <td align="right"> 89 </td> </tr>
+  <tr> <td align="right"> THUNDERSTORM WIND </td> <td align="right"> 1488 </td> <td align="right"> 133 </td> </tr>
+  <tr> <td align="right"> WINTER STORM </td> <td align="right"> 1321 </td> <td align="right"> 206 </td> </tr>
    </table>
 
 ```r
@@ -234,5 +247,8 @@ print(healthTable, floating=FALSE, comment=F,type="html",hline.after=c(0,nrow(he
 #####################################
 ### http://rstudio-pubs-static.s3.amazonaws.com/18170_65d84748b47843c6a01d81b60b09d10c.html
 # http://www.inside-r.org/packages/cran/xtable/docs/print.xtable
+rm(stormData)
 ```
+
+
 ## Results

@@ -3,8 +3,6 @@ title: "Severe Weather Events Impacts on Both Public Health and Economic Problem
 output: 
   html_document:
     keep_md: true
-  pdf_document:
-    highlight: zenburn 
 ---
 # Synopsis
 The report explores the U.S. National Oceanic and Atmospheric Administration's (NOAA) Storm data for the period  year 1950 and end in November 2011.
@@ -49,17 +47,18 @@ fatalities
 
 injuries <- sortHelper("INJURIES", dataset = stormData)
 injuries
+rm(stormData)
 ```
 
 ```{r, echo=TRUE, results='asis'}
-
+stormData <- read.csv("StormData.csv", header=TRUE)
 library(xtable)
-packages <- c("xtable")
-sapply(packages, require, character.only = TRUE, quietly = TRUE)
+#packages <- c("xtable")
+#sapply(packages, require, character.only = TRUE, quietly = TRUE)
 
 # Subset Data into the columns of interrest
 healthData <- stormData[, c("EVTYPE", "INJURIES", "FATALITIES")]
-#head(healthData)
+head(healthData)
 
 
 #healthData <- aggregate.data.frame(x = healthData[, c(2, 3)], by = list(healthData$EVTYPE), FUN = sum)
@@ -83,9 +82,10 @@ healthData <- healthData[healthData$TOTAL != 0, ]
 
 head(healthData)
 
-healthTable <- xtable(healthData[1:10, c("INJURIES","FATALITIES")], caption = "Table 1. Top Ten Events")
+healthTable <- xtable(healthData[1:10, c("INJURIES","FATALITIES")], caption = "Table 1. Top Ten Events",digit=c(0,0,0))
 
-print(healthTable, floating=FALSE, comment=F,type="html",hline.after=c(0,nrow(healthTable)))
+#print(healthTable, floating=FALSE, comment=F,type="html",hline.after=c(0,nrow(healthTable)))
+print(healthTable,type="html")
 #healthTable
 
 # http://rstudio-pubs-static.s3.amazonaws.com/18170_65d84748b47843c6a01d81b60b09d10c.html
@@ -97,5 +97,8 @@ print(healthTable, floating=FALSE, comment=F,type="html",hline.after=c(0,nrow(he
 #####################################
 ### http://rstudio-pubs-static.s3.amazonaws.com/18170_65d84748b47843c6a01d81b60b09d10c.html
 # http://www.inside-r.org/packages/cran/xtable/docs/print.xtable
+rm(stormData)
 ```
+
+
 ## Results
